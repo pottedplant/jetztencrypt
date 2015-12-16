@@ -1,0 +1,53 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+version = '1.0'
+group = 'com.github.pottedplant'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'commons-cli', name: 'commons-cli', version: '1.3.1'
+	compile group: 'org.bouncycastle', name: 'bcprov-ext-jdk15on', version: '1.53'
+	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.53'
+	compile group: 'com.google.guava', name: 'guava', version: '18.0'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.1'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+	compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.7'
+	compile group: 'org.apache.logging.log4j', name: 'log4j', version: '2.4.1'
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+task bundle(type: Jar, dependsOn: [jar,classes]) {
+	classifier 'app'
+
+	manifest {
+		attributes('Main-Class': 'jetztencrypt.bundle.BundleMain')
+	}
+
+	from(sourceSets.main.output) { include 'jetztencrypt/bundle/*.class' }
+	from(jar) { rename '.*', 'main.jar' }
+
+	def classpath = new File(getTemporaryDir(), 'classpath')
+	classpath.createNewFile()
+	from(project.configurations.compile) { 
+		include '*' into 'lib'
+		eachFile {
+			classpath.append('lib/' + it.name + '\n')
+		}
+	}
+
+	from(classpath) { include '*' }
+}
+
+artifacts {
+	archives sourceJar
+}
