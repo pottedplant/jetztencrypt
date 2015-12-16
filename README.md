@@ -71,6 +71,22 @@ Instead of ```--mode server``` use ```--mode directory --acme-directory /path/to
 
 When installing a cron job use ```--log-level warn``` to silence the output.
 
+You may want to use a wrapper script for easier crontab maintenance:
+```bash
+#!/usr/bin/env bash
+java -jar /path/to/jetztencrypt-app.jar \
+  --account-key /path/to/letsencrypt.key \
+  --certificate-key /path/to/server.key \
+  --certificate /path/to/server.crt \
+  --mode directory \
+  --acme-directory /path/to/acme/ \
+  --embedded-identrust-root \
+  --log-level warn \
+  --hostname some.domain \
+  --alt-name www.some.domain --alt-name www2.some.domain \
+&& ( /etc/init.d/nginx reload > /dev/null )
+```
+
 ## Build
 
 ```
