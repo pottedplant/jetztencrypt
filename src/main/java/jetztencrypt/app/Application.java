@@ -135,6 +135,7 @@ public class Application {
 			certificateMinValidDays = Long.parseLong(singleton(cmdline,"certificate-min-valid-days",Long.toString(DEFAULT_CERTIFICATE_MIN_VALID_DAYS)));
 			hostname = singleton(cmdline,"hostname");
 			altNames = cmdline.getOptionValues("alt-name");
+			if( altNames==null ) altNames = new String[]{};
 			mode = singleton(cmdline,"mode");
 			acmeServerUrl = singleton(cmdline,"acme-server",DEFAULT_ACME_SERVER);
 			embeddedIdenTrustRoot = cmdline.hasOption("embedded-identrust-root");
@@ -517,7 +518,7 @@ public class Application {
 		KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 		keyStore.load(null,null);
 
-		if(true) {
+		{
 			int certCount = 0;
 
 			TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
