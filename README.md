@@ -36,6 +36,23 @@ java -jar jetztencrypt-v0.2-rc3-app.jar \
 
 The PEM encoded private key file ```certificate.key``` and certificate chain ```certificate.crt``` may be directly referenced from *nginx*.
 
+## nginx: passthrough
+
+```nginx
+upstream jetztencrypt {
+  server localhost:8080;
+}
+
+server {
+  listen 80;
+  
+  location /.well-known/acme-challenge/ {
+    proxy_pass http://jetztencrypt;
+  }
+}
+
+```
+
 ## Build
 
 ```
