@@ -53,6 +53,20 @@ server {
 
 ```
 
+## nginx: directory mode
+
+```nginx
+server {
+  listen 80;
+  
+  location /.well-known/acme-challenge/ {
+    alias /path/to/acme/dir/;
+  }
+}
+```
+
+Instead of ```--mode server``` use ```--mode directory --acme-directory /path/to/acme/dir/```.
+
 ## Build
 
 ```
