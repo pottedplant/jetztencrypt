@@ -158,7 +158,7 @@ public class Application {
 			switch(mode) {
 
 			case "server": {
-				bindHost = singleton(cmdline,"server-bind-host",DEFAULT_BIND_HOST);
+				bindHost = singleton(cmdline,"server-bind-address",DEFAULT_BIND_HOST);
 				bindPort = Integer.parseInt(singleton(cmdline,"server-bind-port",Integer.toString(DEFAULT_BIND_PORT)));
 			} break;
 
