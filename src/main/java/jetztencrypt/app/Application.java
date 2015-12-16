@@ -89,21 +89,6 @@ public class Application {
 
 	public static void main(String[] args) throws Throwable {
 		try {
-//			System.exit(run(new String[]{
-//				"--account-key","tmp/account.key",
-//				"--certificate-key","tmp/certificate.key",
-//				"--certificate","tmp/certificate.crt",
-//				"--hostname","std.cx",
-//				"--alt-name","std.cx",
-//				"--alt-name","test.std.cx",
-//				"--mode","server",
-//				"--server-bind-port","8090",
-//				"--embedded-identrust-root",
-////				"--acme-directory","tmp/acme",
-//				"--certificate-min-valid-days","90",
-//				"--log-level","info",
-////					"--help",
-//			}));
 			run(args);
 		} catch(Throwable t) {
 			t.printStackTrace(System.err);
