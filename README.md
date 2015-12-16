@@ -96,7 +96,7 @@ Vanilla JDK/JRE installations might not have the required IdenTrust CA certifica
 * Why Java 8?
  * I'm lazy. Somebody volunteers to backport/rewrite?
 * But XYZ is soo cool/new/shiny/fancy/whatsoever!
- * Nope it's not. The only other viable alternative would be plain C or C++ where a mostly static binary would be nice.
+ * Nope it's not. The only other viable alternative would be plain C or C++ where a mostly static binary with as few as possible dependencies would be nice.
 
 ## Build
 
