@@ -34,7 +34,7 @@ java -jar jetztencrypt-v0.2-rc2-app.jar \
 
 *jetztencrypt* will check if a suitable certificate (with some days left before it expires) is present or create a new one otherwise. If no ```account.key``` file is present a new one will be generated.
 
-The created PEM encoded private key file ```certificate.key``` and certificate chain ```certificate.crt``` may be directly referenced from *nginx*.
+The PEM encoded private key file ```certificate.key``` and certificate chain ```certificate.crt``` may be directly referenced from *nginx*.
 
 ## Build
 
