@@ -67,6 +67,10 @@ server {
 
 Instead of ```--mode server``` use ```--mode directory --acme-directory /path/to/acme/dir/```.
 
+## Tips
+
+When installing a cron job use ```--log-level warn``` to silence the output.
+
 ## Build
 
 ```
