@@ -23,11 +23,13 @@ java -jar jetztencrypt-v0.2-rc1-app.jar -- \
   --account-key account.key \
   --certificate-key certificate.key \
   --certificate certificate.crt \
-  --hostname some.domain \
   --mode server \
   --server-bind-port 80 \
   --server-bind-address 0.0.0.0 \
-  --embedded-identrust-root
+  --embedded-identrust-root \
+  --hostname some.domain \
+  --alt-name some.domain \
+  --alt-name www.some.domain
 ```
 
 ## Build
