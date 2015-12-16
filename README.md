@@ -87,6 +87,8 @@ java -jar /path/to/jetztencrypt-app.jar \
 && ( /etc/init.d/nginx reload > /dev/null )
 ```
 
+Vanilla JDK/JRE installations might not have the required IdenTrust CA certificate installed. Until this changes you may use  ```--embedded-identrust-root``` to use a bundeled IdenTrust certificate to prevent *letsencrypt* api calls from failing.
+
 ## Build
 
 ```
