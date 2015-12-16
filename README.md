@@ -4,7 +4,7 @@ FOR EDUCATIONAL PURPOSED ONLY. NO WARRANTY.
 
 # jetztencrypt
 
-Simple letsencrypt (https://letsencrypt.org/) client.
+Simplistic letsencrypt (https://letsencrypt.org/) client.
 
 ## Download
 
