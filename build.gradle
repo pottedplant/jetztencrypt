@@ -50,4 +50,5 @@ task bundle(type: Jar, dependsOn: [jar,classes]) {
 
 artifacts {
 	archives sourceJar
+	archives bundle
 }
