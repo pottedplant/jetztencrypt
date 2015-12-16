@@ -8,20 +8,20 @@ Simple letsencrypt (https://letsencrypt.org/) client.
 
 ## Download
 
-* [jetztencrypt-v0.2-rc2-app.jar](https://jitpack.io/com/github/pottedplant/jetztencrypt/v0.2-rc2/jetztencrypt-v0.2-rc2-app.jar)
+* [jetztencrypt-v0.2-rc3-app.jar](https://jitpack.io/com/github/pottedplant/jetztencrypt/v0.2-rc3/jetztencrypt-v0.2-rc3-app.jar)
 
 > Dependencies: **Java 8**
 
 ## Usage
 
 ```
-java -jar jetztencrypt-v0.2-rc2-app.jar --help
+java -jar jetztencrypt-v0.2-rc3-app.jar --help
 ```
 
 ### Quick and Dirty (privileged user)
 
 ```
-java -jar jetztencrypt-v0.2-rc2-app.jar \
+java -jar jetztencrypt-v0.2-rc3-app.jar \
   --account-key account.key \
   --certificate-key certificate.key \
   --certificate certificate.crt \
