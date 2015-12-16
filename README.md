@@ -36,4 +36,4 @@ java -jar jetztencrypt-v0.2-rc1-app.jar -- \
 ./gradlew bundle
 ```
 
-the bundled application jar can be found in ```build/libs/jetztencrypt-*-app.jar```
+The bundled application jar can be found in ```build/libs/jetztencrypt-*-app.jar```.
