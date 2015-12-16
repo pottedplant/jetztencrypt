@@ -89,6 +89,15 @@ java -jar /path/to/jetztencrypt-app.jar \
 
 Vanilla JDK/JRE installations might not have the required IdenTrust CA certificate installed. Until this changes you may use  ```--embedded-identrust-root``` to use a bundeled IdenTrust certificate to prevent *letsencrypt* api calls from failing.
 
+## FAQ
+
+* Why in Java?
+ * Because i don't have the time and nerves to implement it in some other language.
+* Why Java 8?
+ * I'm lazy. Somebody volunteers to backport/rewrite?
+* But XYZ is soo cool/new/shiny/fancy/whatsoever!
+ * Nope it's not. The only other viable alternative would be plain C or C++ where a mostly static binary would be nice.
+
 ## Build
 
 ```
