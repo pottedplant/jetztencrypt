@@ -8,26 +8,27 @@ Simplistic letsencrypt (https://letsencrypt.org/) client.
 
 ## Download
 
-* [jetztencrypt-v0.3-app.jar](https://jitpack.io/com/github/pottedplant/jetztencrypt/v0.3/jetztencrypt-v0.3-app.jar)
+* [jetztencrypt-v0.4-app.jar](https://jitpack.io/com/github/pottedplant/jetztencrypt/v0.4/jetztencrypt-v0.4-app.jar)
 
 > Dependencies: **Java 8**
 
 ## Usage
 
 ```
-java -jar jetztencrypt-v0.3-app.jar --help
+java -jar jetztencrypt-v0.4-app.jar --help
 ```
 
 ### Quick and Dirty (privileged user)
 
 ```
-java -jar jetztencrypt-v0.3-app.jar \
+java -jar jetztencrypt-v0.4-app.jar \
   --account-key account.key \
   --certificate-key certificate.key \
   --certificate certificate.crt \
   --mode server \
   --server-bind-port 80 \
   --server-bind-address 0.0.0.0 \
+  --accept-any-tos true \
   --embedded-identrust-root \
   --hostname some.domain --alt-name some.domain --alt-name www.some.domain
 ```
@@ -81,6 +82,7 @@ java -jar /path/to/jetztencrypt-app.jar \
   --mode directory \
   --acme-directory /path/to/acme/ \
   --embedded-identrust-root \
+  --accept-any-tos true \
   --log-level warn \
   --hostname some.domain \
   --alt-name www.some.domain --alt-name www2.some.domain \
