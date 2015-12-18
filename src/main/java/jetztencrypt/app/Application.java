@@ -84,6 +84,7 @@ public class Application {
 	private static final int DEFAULT_BIND_PORT = 8080;
 	private static final long DEFAULT_CERTIFICATE_MIN_VALID_DAYS = 30;
 	private static final String DEFAULT_LOG_LEVEL = "info";
+	private static final boolean DEFAULT_ACCEPT_ANY_TOS = false;
 
 	// impl
 
@@ -119,6 +120,9 @@ public class Application {
 		int bindPort = -1;
 		Path acmeDirectory = null;
 
+		boolean acceptAnyTos;
+		String[] acceptTos;
+
 		String logLevel;
 		boolean embeddedIdenTrustRoot;
 
@@ -137,8 +141,14 @@ public class Application {
 			altNames = cmdline.getOptionValues("alt-name");
 			if( altNames==null ) altNames = new String[]{};
 			mode = singleton(cmdline,"mode");
+
+			acceptAnyTos = Boolean.parseBoolean(singleton(cmdline,"accept-any-tos",Boolean.toString(false)));
+			acceptTos = cmdline.getOptionValues("accept-tos");
+			if( acceptTos==null ) acceptTos = new String[]{};
+
 			acmeServerUrl = singleton(cmdline,"acme-server",DEFAULT_ACME_SERVER);
 			embeddedIdenTrustRoot = cmdline.hasOption("embedded-identrust-root");
+
 			logLevel = singleton(cmdline,"log-level",DEFAULT_LOG_LEVEL);
 
 			switch(mode) {
@@ -225,6 +235,11 @@ public class Application {
 			String termsOfService = registration.termsOfService();
 			if( termsOfService!=null && !Objects.equals(termsOfService,registration.agreement()) ) {
 				registrationOptions = registrationOptions.withAgreement(termsOfService);
+
+				if( !acceptAnyTos && !new HashSet<>(Arrays.asList(acceptTos)).contains(registrationOptions.agreement) ) {
+					System.err.println(String.format("you need to agree to the tos: '%s'",registrationOptions.agreement));
+					System.exit(-2);
+				}
 
 				// update agreement
 				registration = Actions.reg(httpClient,registrationUri,nonce,accountKey,registrationOptions);
@@ -679,6 +694,22 @@ public class Application {
 				.longOpt("log-level")
 				.hasArg().argName("level")
 				.desc(String.format("log level (default %s)",DEFAULT_LOG_LEVEL))
+				.build()
+		);
+
+		options.addOption(Option
+			.builder()
+				.longOpt("accept-any-tos")
+				.hasArg().argName("bool")
+				.desc(String.format("accept any tos if required (default %s)",DEFAULT_ACCEPT_ANY_TOS))
+				.build()
+		);
+
+		options.addOption(Option
+			.builder()
+				.longOpt("accept-tos")
+				.hasArg().argName("tos-link")
+				.desc("accept specific tos link")
 				.build()
 		);
 
